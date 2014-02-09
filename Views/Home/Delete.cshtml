@@ -1,0 +1,36 @@
+﻿@model sajid.Models.User
+
+<div class="wrapper row4">
+  <div id="container" class="clear">
+      <div id="content">
+
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>User</legend>
+
+    <div >
+        
+       User Name:  @Model.UserName
+    </div>
+    
+    <div >
+        EMail : @Model.Email
+    </div>
+    
+
+    <div >
+        First Name : @Model.Fname
+    </div>
+   
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input class="btn btn-info" type="submit" value="Delete"/>
+    </p>
+}
+    </div>
+      </div>
+    </div>

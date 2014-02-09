@@ -1,0 +1,93 @@
+﻿@model sajid.Models.Schlr
+<div class="wrapper row4">
+  <div id="container" class="clear">
+      <div id="content">
+<h1>Search</h1>
+
+     @Scripts.Render("~/bundles/jquery")
+     <script type="text/javascript">
+         $(document).ready(function () {
+             $("#countrySelector").change(function () {
+                 var countryId = $("#countrySelector").val();
+
+                 $("#citySelctor option").remove();
+
+
+                 $.getJSON("/Search/Get?id=" + countryId, function (data) {
+                     $("#prg").empty();
+                     var i = 0;
+                     $.each(data, function (i, item) {
+                         if (i % 2 == 0) {
+                             $("#prg").append('<tr class="light"><td>' + item.Name + '</td><td>' + item.Duration + '</td><td>' + item.Merit + '</td><td>' + item.fee + '</td><td>' + item.Meritf + '</td><td>' + item.AdmisD + '</td></tr>');
+                         }
+                         else
+                             $("#prg").append('<tr class="dark"><td>' + item.Name + '</td><td>' + item.Duration + '</td><td>' + item.Merit + '</td><td>' + item.fee + '</td><td>' + item.Meritf + '</td><td>' + item.AdmisD + '</td></tr>');
+                         i++;
+                         //alert('Id = ' + item.Id + " Name = " + item.Name);
+                     });
+
+                 });
+
+             });
+
+         });
+</script>
+    <div>
+     
+        
+
+      <div>
+     <select id="countrySelector">
+<option value="0">-Select Department-</option>
+         @{
+             int i=1;
+             foreach(var itm in ViewBag.d)
+             {
+                <option value='@i'>@itm.Name</option>
+                 i++;
+             }
+         }
+  
+</select>
+<h1>Programmes</h1>
+
+
+
+
+
+
+
+  @*  @Html.ActionLink("Create New", "Create")*@
+
+<table summary="Summary Here" cellpadding="0" cellspacing="0">
+        <thead>
+    <tr>
+        <th>
+           Name
+        </th>
+        <th>
+           Duration
+        </th>
+        <th>
+           Last Year Merit
+        </th>
+        <th> Semester Fee</th>
+        <th> Calculate Merit</th>
+        <th> Admission Date</th>
+    </tr>
+            </thead>
+<tbody id="prg">
+            @* <div>
+      <select id="citySelctor">
+  <option>-Select City-</option>*@
+      
+  
+@*</select>*@
+    
+</tbody>
+</table>
+        </div>
+        </div>
+    </div>
+  </div>
+</div>

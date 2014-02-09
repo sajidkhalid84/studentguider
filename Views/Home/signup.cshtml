@@ -1,0 +1,44 @@
+﻿@Scripts.Render("~/bundles/jquery")
+<script  type="text/javascript">
+    function Changed(textControl) {
+        var UserName = textControl.value;
+        $.getJSON("/home/CheckUserName?UserName=" + UserName, function (data) {
+            if (data) {
+                $('#result').text("User already exists");
+            }
+            else {
+                $('#result').text("User Name is available");
+            }
+        });
+    }
+</script>
+<div class="wrapper row4">
+  <div id="container" class="clear">
+    <div id="content">
+             <h1 class="title">Sign Up</h1>
+             <form method="post" action="/Home/signup" >
+             <input name="Fname" style=" margin-top:25px" type="text" pattern="[a-zA-Z]+" title="Plz enter only Alphabets" placeholder="First Name" required/>
+             <input name="Lname" style="margin-left:3px ; margin-top:25px" type="text" placeholder="Last Name" required/>
+             <input name="City" id="ios" style=" margin-top:5px;width:436px" type="text" placeholder="City" required/>
+             <input name="Email" style=" margin-top:5px ;width:436px" type="email" placeholder="me@example.com" required/>
+             <input name="UserName" onchange="javascript: Changed( this );" id="UserName" style="width:436px ;margin-top:5px" type="text" pattern="[a-zA-Z0-9]+" title="Plz enter only Alphabets" placeholder="User Name" required/><div id="result"></div>
+             <input name="Password"  style="margin-top:5px;width:436px" type="password" placeholder="New Password" required/>
+             <label style="font-size:15px;margin-top:5px">Birthday
+                 <input name="DOB" type="Date" style="margin-top:7px" id="DOB" /></label>
+                <div class="controls-row" >
+                    @Html.Label("Gender")
+                    <label style="font-size:13px;margin-left:10px" class="radio inline">
+                        <input type="radio" name="Gender" value="Male" required />
+                        Male
+                    </label>
+                    <label style="font-size:13px;margin-left:10px" class="radio inline">
+                        <input type="radio" name="Gender" value="Female" required/>
+                        Female
+                     </label>
+                   
+                </div>
+             <input class="btn btn-success" type="submit" value="Sign Up" style="width:200px; margin-top:25px;font-family:sans-serif;font-size:20px">   
+        </form>
+             </div>
+      </div>
+    </div>

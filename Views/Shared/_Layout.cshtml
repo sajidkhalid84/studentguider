@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    
+@*<link href="~/Content/jqueryui.css" rel="stylesheet" />
+<script src="~/Scripts/jquery.js"></script>
+<script src="~/Scripts/jquerymin.js"></script>*@
+
+<meta http-equiv="imagetoolbar" content="no" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/bootstrap2.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap2.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-ui-1.10.4.min.js"></script>
+    <title>Student Guider</title>
+    <script type="text/javascript" src="~/Scripts/jquery-2.1.0.min.js"></script>
+    <link href="~/Content/prettyPhoto.css" rel="stylesheet" />
+    <script type="text/javascript" src="~/Scripts/jquery-prettyPhoto.js"></script>   
+    <link href="~/Content/layout.css" rel="stylesheet" />
+    <link href="~/Content/3_column.css" rel="stylesheet" />
+    <link href="~/Content/liteaccordion.css" rel="stylesheet" />
+    <link href="~/Content/global.css" rel="stylesheet" />
+    <script type="text/javascript" src="~/Scripts/liteaccordion.jquery.min.js"></script>
+
+    <link href="~/Viewer/css_pirobox/style_1/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Viewer/js/jquery-ui-1.8.2.custom.min.js"></script>
+    <script type="text/javascript" src="~/Viewer/js/pirobox_extended.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $().piroBox_ext({
+                piro_speed: 700,
+                bg_alpha: 0.5,
+                piro_scroll: true // pirobox always positioned at the center of the page
+            });
+        });
+        </script>
+</head>
+<body  id="top">
+ <style>
+        #accordion {
+list-style: none;
+margin: 30px 0;
+padding: 0;
+height: 200px;
+overflow: hidden;
+background: #7d8d96;}
+ 
+#accordion li {
+float: left;
+border-left:
+display: block;
+height: 170px;
+width: 50px;
+padding: 15px 0;
+overflow: hidden;
+color: #fff;
+text-decoration: none;
+font-size: 16px;
+line-height: 1.5em;
+border-left: 1px solid #fff;}
+ 
+#accordion li img {
+border: none;
+border-right: 1px solid #fff;
+float: left;
+margin: -15px 15px 0 0;
+}
+ 
+#accordion li.active {
+width: 450px;
+}
+        </style>
+<div class="wrapper row1">
+  <div id="header" class="clear">
+    <div class="fl_left">
+      <h1><a href="index.html" style="text-decoration:none;" >Student Guider</a></h1>
+    </div>
+    @{
+        if (Session["id"] == null)
+        {
+            using (Html.BeginForm("login", "Home", FormMethod.Post, new { id="login"}))
+            {
+                       
+                //@Html.TextBox("login", null, new { @id="d1", @class="btn btn-info pull-right" , @type="submit", style="margin-right:70px ; margin-top:25px ; width:40px", @value ="azxxxaz"});
+                    @Html.TextBox("Password", null, new { @name = "Password", @tabindex = "2", @type = "password", placeholder = "Password", required = "password" });
+                    @Html.TextBox("UserName", null, new { @name = "UserName", @tabindex = "1", @type = "text", placeholder = "User Name or E-mail", required = "UserName" });
+                    <input id="d1" class="btn btn-info pull-right" tabindex="3" type="submit" value="Login">
+            }
+
+        }
+        else
+        {
+            <form action="/home/logout" method="post"  id="login">
+                <input class="btn btn-info pull-right" type="Submit" Value="LogOut"/>
+            </form>
+        }
+    }
+      
+  </div>
+</div>
+<!-- ####################################################################################################### -->
+    <div class="wrapper row2">
+  <div id="topnav">
+    <ul>
+      <li><a href="~/Home/index">Home</a></li>
+      <li><a href="~/Scholarships/f4">Scholarships</a></li>
+      <li><a href="~/Search/srch">Search</a></li>
+      <li><a href="~/Departments/depts">Departments</a>
+      @*<li><a href="#">Departments</a>
+        <ul>
+          <li><a href="#">Link 1</a></li>
+          <li><a href="#">Link 2</a></li>
+          <li><a href="#">Link 3</a></li>
+        </ul>
+      </li>*@
+      <li><a href="~/Gallery/f3">Gallery</a></li>
+      <li class="last"><a href="~/Contactus/f1">Contact Us</a></li>
+      
+    </ul>
+    <ul>
+        @if (Session["id"] == null)
+        {
+            
+            <form action="/home/f6" method="post">
+                <input class="btn btn-info pull-right" style="align-self:flex-start;margin-top:10px" type="Submit" Value="SignUp" id="signupS" alt="Sign Up" />
+            </form>
+        
+        }
+        </ul>
+    <div  class="clear"></div>
+  </div>
+</div>
+    @RenderBody()
+    
+    
+    
+<script type="text/javascript">
+    $(function () {
+        var availableTags = [
+          "ActionScript",
+          "AppleScript",
+          "Asp",
+          "BASIC",
+          "C",
+          "C++",
+          "Clojure",
+          "COBOL",
+          "ColdFusion",
+          "Erlang",
+          "Fortran",
+          "Groovy",
+          "Haskell",
+          "Java",
+          "JavaScript",
+          "Lisp",
+          "Perl",
+          "PHP",
+          "Python",
+          "Ruby",
+          "Scala",
+          "Scheme"
+        ];
+        $("#tags").autocomplete({
+            source: availableTags
+        });
+    });
+$("#featured_slide").liteAccordion({
+    theme: "os-tpl",
+	
+    containerWidth: 960, // fixed (px)
+    containerHeight: 360, // fixed (px) - overall height of the slider
+    headerWidth: 48, // fixed (px) - slide spine title
+
+    firstSlide: 1, // displays slide (n) on page load
+	activateOn: "click", // click or mouseover
+    autoPlay: false, // automatically cycle through slides
+    pauseOnHover: true, // pause slides on hover
+    rounded: false, // square or rounded corners
+    enumerateSlides: true, // put numbers on slides
+
+    slideSpeed: 800, // slide animation speed
+    cycleSpeed: 6000, // time between slide cycles
+});
+//$(function () {
+//    $("li").click(function () {
+//        // remove classes from all
+//        $("li").removeClass("active");
+//        // add class to the one we clicked
+//        $(this).addClass("active");
+//    });
+//});
+function tick() {
+    $('#ticker_01 li:first').slideUp(function () { $(this).appendTo($('#ticker_01')).slideDown(); });
+}
+setInterval(function () { tick() }, 5000);
+
+
+function tick2() {
+    $('#ticker_02 li:first').slideUp(function () { $(this).appendTo($('#ticker_02')).slideDown(); });
+}
+setInterval(function () { tick2() }, 3000);
+
+
+function tick3() {
+    $('#ticker_03 li:first').animate({ 'opacity': 0 }, 200, function () { $(this).appendTo($('#ticker_03')).css('opacity', 1); });
+}
+setInterval(function () { tick3() }, 4000);
+
+function tick4() {
+    $('#ticker_04 li:first').slideUp(function () { $(this).appendTo($('#ticker_04')).slideDown(); });
+}
+
+</script>
+    
+
+<div class="wrapper row5">
+  <div id="footer" class="clear">
+    <!-- ####################################################################################################### -->
+    <div class="foot_contact">
+      <h2 style="text-align:left">Punjab University</h2>
+      <address>
+      P.O. Box No. 54590. Lahore, Pakistan.<br />
+      P.O. Box. No. 54000. Lahore, Pakistan.<br />
+      Lahore Pakistan<br />
+      54000
+      </address>
+      <ul>
+        <li><strong>Tel:</strong> 092-42-990161205</li>
+        <li><strong>Fax:</strong> 92-42-99231101 </li>
+        <li class="last"><strong>Email:</strong> <a href="#">vc@pu.edu.pk</a></li>
+      </ul>
+    </div>
+    <div class="footbox">
+      <h2 style="text-align:left">Administration</h2>
+      <ul>
+        <li><a href="#">Disclaimer</a></li>
+        <li><a href="#">Accessibility</a></li>
+        <li><a href="#">Freedom of Information</a></li>
+        <li><a href="#">Website Privacy</a></li>
+        <li><a href="#">Press Release Information</a></li>
+        <li><a href="#">Annual Report</a></li>
+        <li><a href="#">Financial Statements</a></li>
+        <li><a href="#">Job Vacancies</a></li>
+        <li class="last"><a href="#">Semester Dates</a></li>
+      </ul>
+    </div>
+    <div class="footbox">
+      <h2 style="text-align:left">&nbsp</h2>
+      <ul>
+        <li><a href="#">Schools and Colleges</a></li>
+        <li><a href="#">Student Activities</a></li>
+        <li><a href="#">Student Affairs</a></li>
+        <li><a href="#">Student Development</a></li>
+        <li><a href="#">Student Financial Services</a></li>
+        <li><a href="#">Student Group Directory</a></li>
+        <li><a href="#">Student Life</a></li>
+        <li><a href="#">International Students</a></li>
+        <li class="last"><a href="#">Global Learning</a></li>
+      </ul>
+    </div>
+    <div class="footbox last">
+      <h2 style="text-align:left">&nbsp</h2>
+      <ul>
+        <li><a href="#">Academic Advisory</a></li>
+        <li><a href="#">Academic Assistance</a></li>
+        <li><a href="#">Academic Calendars</a></li>
+        <li><a href="#">Academics Office</a></li>
+        <li><a href="#">Administration</a></li>
+        <li><a href="#">Adult Learners</a></li>
+        <li><a href="#">Alumni Chapters</a></li>
+        <li><a href="#">Alumni Events</a></li>
+        <li class="last"><a href="#">Residential Colleges</a></li>
+      </ul>
+    </div>
+    <!-- ####################################################################################################### -->
+  </div>
+</div>
+<!-- ####################################################################################################### -->
+<div class="wrapper">
+  <div id="copyright" class="clear">
+      
+    <p class="fl_left">Copyright &copy; 2014 - All Rights Reserved - @Html.ActionLink("  Student Guider", "index")</p>
+    <p class="fl_right">PU</p>
+  </div>
+</div>
+    
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

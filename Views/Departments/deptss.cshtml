@@ -1,0 +1,94 @@
+﻿
+@{
+  
+}
+<div class="wrapper row4">
+  <div id="container" class="clear">
+      <div id="content">
+<h1>Programmes</h1>
+
+
+
+
+
+
+
+  @*  @Html.ActionLink("Create New", "Create")*@
+
+<table summary="Summary Here" cellpadding="0" cellspacing="0">
+        <thead>
+    <tr>
+        <th>
+           Name
+        </th>
+        <th>
+           Duration
+        </th>
+        <th>
+           Last Year Merit
+        </th>
+        <th> Semester Fee</th>
+        <th> Calculate Merit</th>
+        <th> Admission Date</th>
+    </tr>
+            </thead>
+<tbody>
+    @{
+        int id=0;
+foreach (var item in ViewBag.a) {
+    if(id%2==0)
+    {
+    <tr class="light">
+        <td>
+           @item.Name
+        </td>
+        <td>
+            @item.Duration
+        </td>
+        <td>
+           @item.Merit
+        </td>
+        <td>
+           @item.fees
+        </td>
+         <td>
+           @item.Meritf
+        </td>
+         <td>
+           @item.AdmisD
+        </td>
+    </tr>
+    }
+    else
+    {
+        <tr class="dark">
+        <td>
+           @item.Name
+        </td>
+        <td>
+            @item.Duration
+        </td>
+        <td>
+           @item.Merit
+        </td>
+        <td>
+           @item.fees
+        </td>
+         <td>
+           @item.Meritf
+        </td>
+         <td>
+           @item.AdmisD
+        </td>
+    </tr>
+    }
+    id++;
+    
+}
+}
+</tbody>
+</table>
+        <div class="clear"></div>
+  </div>
+</div>
+    </div>
